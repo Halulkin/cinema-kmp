@@ -1,11 +1,11 @@
 package org.halulkin
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import coil3.ImageLoader
 import coil3.SingletonImageLoader
 import coil3.request.crossfade
 import coil3.util.DebugLogger
+import org.halulkin.designsystem.CinemaTheme
 import org.halulkin.di.appModule
 import org.halulkin.ui.navigation.MainScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -25,8 +25,7 @@ fun App() {
                 .logger(DebugLogger())
                 .build()
         }
-
-        MaterialTheme {
+        CinemaTheme {
             MainScreen()
         }
     }
