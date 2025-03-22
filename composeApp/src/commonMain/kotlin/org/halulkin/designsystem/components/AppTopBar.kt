@@ -35,6 +35,7 @@ fun AppTopBar(
                 IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        tint = Color.White,
                         contentDescription = "back",
                     )
                 }

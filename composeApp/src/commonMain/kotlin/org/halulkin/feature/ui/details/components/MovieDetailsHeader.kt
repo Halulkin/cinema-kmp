@@ -33,19 +33,17 @@ fun MovieDetailsHeader(
                 .fillMaxWidth()
                 .fillMaxHeight(0.4f)
         )
-
         AppTopBar(
             onBackButtonClick = onBackClick,
             actionButton = {
                 IconButton(onClick = onFavoriteClick) {
                     Icon(
-                        imageVector =
-                            if (isFavorite) {
-                                Icons.Filled.Favorite
-                            } else {
-                                Icons.Default.FavoriteBorder
-                            },
-                        tint = if (isFavorite) Color.Red else Color.Black,
+                        imageVector = if (isFavorite) {
+                            Icons.Filled.Favorite
+                        } else {
+                            Icons.Default.FavoriteBorder
+                        },
+                        tint = if (isFavorite) Color.Red else Color.White,
                         contentDescription = "favorite",
                     )
                 }

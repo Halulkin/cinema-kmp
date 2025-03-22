@@ -1,12 +1,16 @@
 package org.halulkin.feature.ui.details
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -20,12 +24,17 @@ fun MovieDetailsScreen(
     state: MovieDetailsState,
     actions: MovieDetailsActions,
 ) {
-    PullToRefreshBox(
-        isRefreshing = state.isLoading,
-        onRefresh = actions.onBackClick,
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        if (state.error != null) {
-            // Show Error
+        if (state.isLoading) {
+            CircularProgressIndicator()
+        } else if (state.error != null) {
+            Text(
+                text = state.error,
+                style = MaterialTheme.typography.titleLarge
+            )
         } else {
             MovieDetailsContent(
                 state = state,
