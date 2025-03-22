@@ -1,8 +1,8 @@
 package org.halulkin.feature.data.api
 
 import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import app.cash.paging.PagingConfig
+import app.cash.paging.PagingData
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get

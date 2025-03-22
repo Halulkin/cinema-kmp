@@ -1,6 +1,6 @@
 package org.halulkin.feature.domain.usecase
 
-import androidx.paging.PagingData
+import app.cash.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import org.halulkin.feature.domain.model.Movie
 import org.halulkin.feature.domain.model.MovieType

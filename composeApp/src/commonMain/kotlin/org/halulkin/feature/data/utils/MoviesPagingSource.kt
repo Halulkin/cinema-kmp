@@ -1,6 +1,6 @@
 package org.halulkin.feature.data.utils
 
-import androidx.paging.PagingSource
+import app.cash.paging.PagingSource
 import app.cash.paging.PagingState
 
 class MoviesPagingSource<T : Any>(val fetchData: suspend (page: Int) -> List<T>?) :
