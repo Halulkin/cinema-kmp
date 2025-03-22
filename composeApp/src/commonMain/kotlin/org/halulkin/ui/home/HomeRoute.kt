@@ -22,6 +22,5 @@ fun rememberHomeActions(
     viewModel: HomeViewModel,
 ) = remember(viewModel) {
     HomeActions(
-        onRefresh = viewModel::onRefresh,
     )
 }

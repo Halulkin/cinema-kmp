@@ -3,7 +3,6 @@ package org.halulkin.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,11 +19,6 @@ class HomeViewModel(
     val stateFlow: StateFlow<HomeState> = _stateFlow.asStateFlow()
 
     init {
-        loadContent()
-    }
-
-    fun onRefresh() {
-        viewModelScope.coroutineContext.cancelChildren()
         loadContent()
     }
 

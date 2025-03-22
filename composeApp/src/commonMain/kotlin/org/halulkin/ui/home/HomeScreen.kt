@@ -1,11 +1,23 @@
 package org.halulkin.ui.home
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import app.cash.paging.compose.collectAsLazyPagingItems
+import org.halulkin.domain.model.MovieType
+import org.halulkin.ui.home.components.MovieCardStyle
+import org.halulkin.ui.home.components.MovieSection
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -13,15 +25,17 @@ internal fun HomeScreen(
     state: HomeState,
     actions: HomeActions,
 ) {
-    PullToRefreshBox(
-        isRefreshing = state.isLoading,
-        onRefresh = actions.onRefresh,
-        contentAlignment = Alignment.TopCenter,
+    Box(
         modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        if (state.error != null) {
-            // Show Error
-            println("Error: ${state.error}")
+        if (state.isLoading) {
+            CircularProgressIndicator()
+        } else if (state.error != null) {
+            Text(
+                text = state.error,
+                style = MaterialTheme.typography.titleLarge
+            )
         } else {
             HomeContent(
                 state = state,
@@ -35,4 +49,26 @@ internal fun HomeScreen(
 private fun HomeContent(
     state: HomeState,
 ) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
+    ) {
+        MovieSection(
+            title = "Trending",
+            movies = state.movies[MovieType.Trending]?.collectAsLazyPagingItems(),
+            style = MovieCardStyle.Small,
+        )
+        MovieSection(
+            title = "Popular",
+            movies = state.movies[MovieType.Popular]?.collectAsLazyPagingItems(),
+            style = MovieCardStyle.Small,
+        )
+        MovieSection(
+            title = "Top Rated",
+            movies = state.movies[MovieType.TopRated]?.collectAsLazyPagingItems(),
+            style = MovieCardStyle.Small,
+        )
+    }
 }
