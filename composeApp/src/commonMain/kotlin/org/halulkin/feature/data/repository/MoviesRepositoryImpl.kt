@@ -19,6 +19,6 @@ class MoviesRepositoryImpl(
     }
 
     override suspend fun getMovieById(id: Int): Movie {
-        TODO("Not yet implemented")
+        return api.getMovieById(id)
     }
 }
