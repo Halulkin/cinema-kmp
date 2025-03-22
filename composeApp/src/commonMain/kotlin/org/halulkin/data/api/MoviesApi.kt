@@ -28,7 +28,7 @@ class MoviesApi(
 
     fun getTrendingMovies(): Result<Flow<PagingData<Movie>>> = runCatching {
         fetchPagedMovies { page ->
-            httpClient.get(urlString = "movie/trending") {
+            httpClient.get(urlString = "trending/movie/day") {
                 parameter("page", page)
             }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
         }
