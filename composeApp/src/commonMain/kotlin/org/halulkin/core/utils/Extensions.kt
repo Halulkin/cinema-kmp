@@ -7,3 +7,13 @@ fun Double.toOneDecimalString(): String {
     val roundedValue = round(this * multiplier) / multiplier
     return roundedValue.toString()
 }
+
+fun Int.formatVoteCount(): String {
+    return when {
+        this > 999 -> {
+            "${this / 1000}k"
+        }
+
+        else -> "$this"
+    }
+}
