@@ -5,6 +5,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import coil3.ImageLoader
+import coil3.SingletonImageLoader
+import coil3.request.crossfade
+import coil3.util.DebugLogger
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple01,
@@ -27,11 +31,18 @@ private val DarkColorScheme = darkColorScheme(
 
 @Composable
 fun CinemaTheme(content: @Composable () -> Unit) {
+    SingletonImageLoader.setSafe { context ->
+        ImageLoader.Builder(context)
+            .crossfade(true)
+            .logger(DebugLogger())
+            .build()
+    }
+
     CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onPrimary) {
         MaterialTheme(
             colorScheme = DarkColorScheme,
-            content = content,
             typography = MaterialTheme.typography,
+            content = content,
         )
     }
 }
