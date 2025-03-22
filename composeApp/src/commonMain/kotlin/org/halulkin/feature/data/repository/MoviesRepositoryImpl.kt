@@ -8,25 +8,13 @@ import org.halulkin.feature.domain.model.MovieType
 import org.halulkin.feature.domain.repository.MovieRepository
 
 class MoviesRepositoryImpl(
-    private val api: MoviesApi,
+    private val remote: MoviesApi,
 ) : MovieRepository {
     override suspend fun getByMediaType(movieType: MovieType): Result<Flow<PagingData<Movie>>> {
         return when (movieType) {
-            MovieType.Trending -> api.getTrendingMovies()
-            MovieType.Popular -> api.getPopularMovies()
-            MovieType.TopRated -> api.getTopRatedMovies()
+            MovieType.Trending -> remote.getTrendingMovies()
+            MovieType.Popular -> remote.getPopularMovies()
+            MovieType.TopRated -> remote.getTopRatedMovies()
         }
-    }
-
-    override suspend fun getMovieById(id: Int): Movie {
-        return api.getMovieById(id)
-    }
-
-    override suspend fun addFavorite(movie: Movie) {
-        // TODO: Implement this method
-    }
-
-    override suspend fun removeFavorite(id: Int) {
-        // TODO: Implement this method
     }
 }
