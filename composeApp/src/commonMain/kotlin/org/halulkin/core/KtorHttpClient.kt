@@ -11,6 +11,7 @@ import io.ktor.http.URLProtocol
 import io.ktor.http.path
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.halulkin.BuildConfig
 import org.halulkin.domain.utils.Constants
 
 object KtorHttpClient {
@@ -24,7 +25,7 @@ object KtorHttpClient {
                 protocol = URLProtocol.Companion.HTTPS
                 host = Constants.BASE_URL
                 path(Constants.URL_PATH)
-                parameters.append("api_key", "API_KEY")
+                parameters.append("api_key", BuildConfig.API_KEY)
             }
         }
 
