@@ -56,7 +56,7 @@ fun MovieDetailsContent(
     ) {
         MovieDetailsHeader(
             isFavorite = state.movie.isFavorite,
-            image = state.movie.image,
+            image = state.movie.backdrop,
             onBackClick = actions.onBackClick,
             onFavoriteClick = actions.onFavoriteClick,
         )
