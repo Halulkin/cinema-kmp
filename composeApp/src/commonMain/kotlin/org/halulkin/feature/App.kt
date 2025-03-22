@@ -5,7 +5,7 @@ import coil3.ImageLoader
 import coil3.SingletonImageLoader
 import coil3.request.crossfade
 import coil3.util.DebugLogger
-import org.halulkin.designsystem.CinemaTheme
+import org.halulkin.designsystem.theme.CinemaTheme
 import org.halulkin.feature.di.appModule
 import org.halulkin.feature.ui.navigation.MainScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview

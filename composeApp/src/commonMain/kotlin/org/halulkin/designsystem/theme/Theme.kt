@@ -1,4 +1,4 @@
-package org.halulkin.designsystem
+package org.halulkin.designsystem.theme
 
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme

@@ -1,4 +1,4 @@
-package org.halulkin.designsystem
+package org.halulkin.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White

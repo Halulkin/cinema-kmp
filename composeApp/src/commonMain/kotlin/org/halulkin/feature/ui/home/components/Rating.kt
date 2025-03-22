@@ -15,12 +15,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import cinema_kmp.composeapp.generated.resources.Res
 import cinema_kmp.composeapp.generated.resources.lightning
-import org.halulkin.designsystem.SystemError
-import org.halulkin.designsystem.SystemErrorText
-import org.halulkin.designsystem.SystemSuccess
-import org.halulkin.designsystem.SystemSuccessText
-import org.halulkin.designsystem.SystemWaring
-import org.halulkin.designsystem.SystemWaringText
+import org.halulkin.designsystem.theme.SystemError
+import org.halulkin.designsystem.theme.SystemErrorText
+import org.halulkin.designsystem.theme.SystemSuccess
+import org.halulkin.designsystem.theme.SystemSuccessText
+import org.halulkin.designsystem.theme.SystemWaring
+import org.halulkin.designsystem.theme.SystemWaringText
 import org.halulkin.core.utils.toOneDecimalString
 import org.jetbrains.compose.resources.painterResource
 
