@@ -17,6 +17,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import org.halulkin.feature.ui.details.MovieDetailsRoute
 import org.halulkin.feature.ui.home.HomeRoute
 import org.jetbrains.compose.resources.stringResource
 
@@ -92,7 +93,9 @@ fun NavigationGraph(
         }
 
         composable<NavItem.MovieDetails> {
-            // TODO: Implement MovieDetailsRoute
+            MovieDetailsRoute(
+                onBackPress = { navController.popBackStack() }
+            )
         }
     }
 }
