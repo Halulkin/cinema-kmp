@@ -17,10 +17,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import org.halulkin.ui.home.HomeRoute
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun AppNavigation() {
+fun MainScreen() {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomNavigation(navController) },
@@ -83,7 +84,7 @@ fun NavigationGraph(
         modifier = modifier,
     ) {
         composable(route = BottomNavItem.Home.route) {
-            // TODO: Implement HomeRoute
+            HomeRoute()
         }
 
         composable(route = BottomNavItem.Favorite.route) {
