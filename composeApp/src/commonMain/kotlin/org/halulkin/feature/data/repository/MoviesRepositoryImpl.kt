@@ -17,4 +17,8 @@ class MoviesRepositoryImpl(
             MovieType.TopRated -> api.getTopRatedMovies()
         }
     }
+
+    override suspend fun getMovieById(id: Int): Movie {
+        TODO("Not yet implemented")
+    }
 }
