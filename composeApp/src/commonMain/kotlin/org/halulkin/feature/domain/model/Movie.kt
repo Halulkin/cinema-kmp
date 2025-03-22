@@ -8,4 +8,17 @@ data class Movie(
     val voteAverage: Double,
     val voteCount: Int,
     val isFavorite: Boolean = false,
-)
+) {
+    companion object {
+        val MockMovie = Movie(
+            id = 0,
+            name = "",
+            image = "",
+            overview = "",
+            voteAverage = 0.0,
+            voteCount = 0,
+            isFavorite = false,
+        )
+    }
+}
+
