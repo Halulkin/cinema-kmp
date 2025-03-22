@@ -33,6 +33,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.ktor.okhttp)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -46,6 +47,18 @@ kotlin {
 
             implementation(libs.navigation.compose)
             implementation(libs.kotlinx.serialization.json)
+
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.composeViewModel)
+
+            implementation(libs.bundles.ktor)
+            implementation(libs.bundles.paging)
+            implementation(libs.bundles.coil)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin)
         }
     }
 }
