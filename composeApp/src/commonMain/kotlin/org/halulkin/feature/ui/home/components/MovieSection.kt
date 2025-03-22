@@ -21,6 +21,7 @@ fun MovieSection(
     title: String,
     movies: LazyPagingItems<Movie>?,
     style: MovieCardStyle,
+    onMovieClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
@@ -42,7 +43,7 @@ fun MovieSection(
                         image = it.image,
                         title = it.name,
                         voteAverage = it.voteAverage,
-                        onClick = { },
+                        onClick = { onMovieClick(it.id) },
                         imageSize = style.imageSize,
                         modifier = Modifier
                             .size(style.cardSize),

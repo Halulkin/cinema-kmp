@@ -8,11 +8,15 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun HomeRoute(
+    onMovieClick: (Int) -> Unit,
     viewModel: HomeViewModel = koinViewModel<HomeViewModel>()
 ) {
     val uiState by viewModel.stateFlow.collectAsStateWithLifecycle()
 
-    val actions = rememberHomeActions(viewModel)
+    val actions = rememberHomeActions(
+        viewModel = viewModel,
+        onMovieClick = onMovieClick,
+    )
 
     HomeScreen(uiState, actions)
 }
@@ -20,7 +24,9 @@ fun HomeRoute(
 @Composable
 fun rememberHomeActions(
     viewModel: HomeViewModel,
+    onMovieClick: (Int) -> Unit
 ) = remember(viewModel) {
     HomeActions(
+        onMovieClick = onMovieClick,
     )
 }

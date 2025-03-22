@@ -1,5 +1,6 @@
 package org.halulkin.feature.ui.home.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -26,11 +27,14 @@ fun MovieCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Box(modifier = modifier) {
+    Box(
+        modifier = modifier
+            .clickable { onClick() }
+    ) {
         Column {
             AsyncImage(
                 model = image,
-                contentDescription = "Trending movie poster",
+                contentDescription = "Movie poster",
                 contentScale = ContentScale.Crop,
                 alignment = Alignment.Center,
                 modifier = Modifier

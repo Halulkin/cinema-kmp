@@ -85,7 +85,11 @@ fun NavigationGraph(
         modifier = modifier,
     ) {
         composable(route = BottomNavItem.Home.route) {
-            HomeRoute()
+            HomeRoute(
+                onMovieClick = { movieId ->
+                    navController.navigate(NavItem.MovieDetails(movieId))
+                }
+            )
         }
 
         composable(route = BottomNavItem.Favorite.route) {

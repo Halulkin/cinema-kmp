@@ -39,6 +39,7 @@ internal fun HomeScreen(
         } else {
             HomeContent(
                 state = state,
+                onMovieClick = actions.onMovieClick,
             )
         }
     }
@@ -48,6 +49,7 @@ internal fun HomeScreen(
 @Composable
 private fun HomeContent(
     state: HomeState,
+    onMovieClick: (Int) -> Unit,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(24.dp),
@@ -59,16 +61,19 @@ private fun HomeContent(
             title = "Trending",
             movies = state.movies[MovieType.Trending]?.collectAsLazyPagingItems(),
             style = MovieCardStyle.Small,
+            onMovieClick = onMovieClick,
         )
         MovieSection(
             title = "Popular",
             movies = state.movies[MovieType.Popular]?.collectAsLazyPagingItems(),
             style = MovieCardStyle.Small,
+            onMovieClick = onMovieClick,
         )
         MovieSection(
             title = "Top Rated",
             movies = state.movies[MovieType.TopRated]?.collectAsLazyPagingItems(),
             style = MovieCardStyle.Small,
+            onMovieClick = onMovieClick,
         )
     }
 }
