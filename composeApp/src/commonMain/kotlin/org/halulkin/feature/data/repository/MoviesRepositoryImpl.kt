@@ -21,4 +21,12 @@ class MoviesRepositoryImpl(
     override suspend fun getMovieById(id: Int): Movie {
         return api.getMovieById(id)
     }
+
+    override suspend fun addFavorite(movie: Movie) {
+        // TODO: Implement this method
+    }
+
+    override suspend fun removeFavorite(id: Int) {
+        // TODO: Implement this method
+    }
 }
