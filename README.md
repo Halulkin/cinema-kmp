@@ -1,5 +1,17 @@
 This is a Kotlin Multiplatform project targeting Android, iOS.
 
+## HOW TO RUN
+
+Add your TMDB API key to the `local.properties` file before running the app:
+
+1. Open or create the `local.properties` file.
+2. Add a line in this format:
+```
+API_KEY=your_tmdb_api_key
+```
+3. Save the file and run the app.
+
+
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
   - `commonMain` is for code that’s common for all targets.
