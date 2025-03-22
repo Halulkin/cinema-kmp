@@ -1,37 +1,32 @@
 package org.halulkin
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
+import androidx.compose.runtime.Composable
+import coil3.ImageLoader
+import coil3.SingletonImageLoader
+import coil3.request.crossfade
+import coil3.util.DebugLogger
+import org.halulkin.designsystem.CinemaTheme
+import org.halulkin.di.appModule
+import org.halulkin.ui.navigation.MainScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import cinema_kmp.composeapp.generated.resources.Res
-import cinema_kmp.composeapp.generated.resources.compose_multiplatform
+import org.koin.compose.KoinApplication
 
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
-            }
+    KoinApplication(
+        application = {
+            modules(appModule())
+        }
+    ) {
+        SingletonImageLoader.setSafe { context ->
+            ImageLoader.Builder(context)
+                .crossfade(true)
+                .logger(DebugLogger())
+                .build()
+        }
+        CinemaTheme {
+            MainScreen()
         }
     }
 }

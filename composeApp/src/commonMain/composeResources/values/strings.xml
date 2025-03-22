@@ -1,0 +1,8 @@
+<resources>
+    <!-- Bottom Navigation -->
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+
+    <!-- Navigation Items-->
+    <string name="details">"Details</string>
+</resources>
