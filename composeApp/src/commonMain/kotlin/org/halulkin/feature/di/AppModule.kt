@@ -4,8 +4,10 @@ import org.halulkin.core.network.KtorHttpClient
 import org.halulkin.feature.data.api.MoviesApi
 import org.halulkin.feature.data.repository.MoviesRepositoryImpl
 import org.halulkin.feature.domain.repository.MovieRepository
+import org.halulkin.feature.domain.usecase.AddFavoriteMovieUseCase
 import org.halulkin.feature.domain.usecase.GetMovieUseCase
 import org.halulkin.feature.domain.usecase.GetMoviesUseCase
+import org.halulkin.feature.domain.usecase.RemoveFavoriteMovieUseCase
 import org.halulkin.feature.ui.details.MovieDetailsViewModel
 import org.halulkin.feature.ui.home.HomeViewModel
 import org.koin.core.module.dsl.viewModelOf
@@ -19,6 +21,8 @@ fun appModule() = module {
 
     single { GetMoviesUseCase(get()) }
     single { GetMovieUseCase(get()) }
+    single { AddFavoriteMovieUseCase(get()) }
+    single { RemoveFavoriteMovieUseCase(get()) }
 
     viewModelOf(::HomeViewModel)
     viewModelOf(::MovieDetailsViewModel)

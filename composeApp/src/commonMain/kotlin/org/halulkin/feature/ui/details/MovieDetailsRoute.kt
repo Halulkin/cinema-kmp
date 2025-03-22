@@ -28,6 +28,6 @@ fun rememberMovieDetailsActions(
 ) = remember(viewModel) {
     MovieDetailsActions(
         onBackClick = onBackPress,
-        onFavoriteClick = { /* TODO: Implement favorite click */ },
+        onFavoriteClick = viewModel::toggleFavoriteMovie,
     )
 }
