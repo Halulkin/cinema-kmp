@@ -1,6 +1,6 @@
 package org.halulkin
 
 import androidx.compose.ui.window.ComposeUIViewController
-import org.halulkin.feature.App
+import org.halulkin.feature.ComposeApp
 
-fun MainViewController() = ComposeUIViewController { App() }
+fun MainViewController() = ComposeUIViewController { ComposeApp() }
