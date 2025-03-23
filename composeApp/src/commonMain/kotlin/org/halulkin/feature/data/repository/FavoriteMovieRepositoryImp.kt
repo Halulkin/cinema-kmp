@@ -13,7 +13,7 @@ class FavoriteMovieRepositoryImp(
     private val database: AppDatabase
 ) : FavoriteMovieRepository {
 
-    override suspend fun getMovies(): Flow<List<Movie>> {
+    override fun getMovies(): Flow<List<Movie>> {
         return database.getFavoriteDao()
             .getAll()
             .map { it.map(MovieEntity::toMovie) }

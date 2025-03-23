@@ -31,9 +31,7 @@ class HomeViewModel(
         movieMediaTypes.forEach(::loadMovies)
     }
 
-    private fun loadMovies(
-        movieType: MovieType,
-    ) = viewModelScope.launch {
+    private fun loadMovies(movieType: MovieType) = viewModelScope.launch {
         _stateFlow.update { it.copy(isLoading = true) }
 
         getMoviesUseCase(movieType)
