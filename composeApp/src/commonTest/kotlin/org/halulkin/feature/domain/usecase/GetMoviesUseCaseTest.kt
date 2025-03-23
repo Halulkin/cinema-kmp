@@ -1,6 +1,5 @@
 package org.halulkin.feature.domain.usecase
 
-import GetMoviesUseCase
 import app.cash.paging.PagingData
 import io.mockk.coEvery
 import io.mockk.mockk
