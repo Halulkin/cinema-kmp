@@ -8,11 +8,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import org.halulkin.designsystem.components.LottieAnimation
 import org.halulkin.feature.ui.home.components.MovieCard
 import org.halulkin.feature.ui.home.components.MovieCardStyle
 
@@ -26,7 +26,7 @@ fun FavoriteScreen(
         contentAlignment = Alignment.Center
     ) {
         if (state.isLoading) {
-            CircularProgressIndicator()
+            LottieAnimation(filePath = "files/bear.json")
         } else {
             FavoriteScreenContent(
                 state = state,
