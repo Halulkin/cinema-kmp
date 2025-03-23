@@ -97,7 +97,13 @@ android {
 
 val secretKeyProperties by lazy {
     val secretKeyPropertiesFile = rootProject.file("local.properties")
-    Properties().apply { secretKeyPropertiesFile.inputStream().use { secret -> load(secret) } }
+    if (secretKeyPropertiesFile.exists()) {
+        Properties().apply { secretKeyPropertiesFile.inputStream().use { load(it) } }
+    } else {
+        // If the file does not exist, return an empty Properties object.
+        // This is necessary for the CI spotless check.
+        Properties()
+    }
 }
 
 buildConfig {
