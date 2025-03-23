@@ -2,12 +2,12 @@ package org.halulkin.feature.domain.usecase
 
 import org.halulkin.core.extensions.suspendRunCatching
 import org.halulkin.feature.domain.model.Movie
-import org.halulkin.feature.domain.repository.MovieRepository
+import org.halulkin.feature.domain.repository.FavoriteMovieRepository
 
-class AddFavoriteMovieUseCase(
-    private val moviesRepository: MovieRepository,
+class SaveFavoriteMovieUseCase(
+    private val repository: FavoriteMovieRepository,
 ) {
     suspend operator fun invoke(movie: Movie) = suspendRunCatching {
-        moviesRepository.addFavorite(movie)
+        repository.saveFavorite(movie)
     }
 }

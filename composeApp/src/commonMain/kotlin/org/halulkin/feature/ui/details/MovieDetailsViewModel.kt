@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.halulkin.feature.domain.usecase.AddFavoriteMovieUseCase
+import org.halulkin.feature.domain.usecase.SaveFavoriteMovieUseCase
 import org.halulkin.feature.domain.usecase.GetMovieUseCase
 import org.halulkin.feature.domain.usecase.RemoveFavoriteMovieUseCase
 
 class MovieDetailsViewModel(
     private val getMovieUseCase: GetMovieUseCase,
-    private val addFavoriteMovieUseCase: AddFavoriteMovieUseCase,
+    private val saveFavoriteMovieUseCase: SaveFavoriteMovieUseCase,
     private val removeFavoriteMovieUseCase: RemoveFavoriteMovieUseCase,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
@@ -47,7 +47,7 @@ class MovieDetailsViewModel(
         val result = if (currentMovie.isFavorite) {
             removeFavoriteMovieUseCase(currentMovie.id)
         } else {
-            addFavoriteMovieUseCase(currentMovie)
+            saveFavoriteMovieUseCase(currentMovie)
         }
 
         result.onSuccess {

@@ -1,9 +1,12 @@
 package org.halulkin.feature.domain.model
 
+import org.halulkin.feature.data.persistence.entitiy.MovieEntity
+
 data class Movie(
     val id: Int,
     val name: String,
     val image: String,
+    val backdrop: String,
     val overview: String,
     val voteAverage: Double,
     val voteCount: Int,
@@ -14,6 +17,7 @@ data class Movie(
             id = 0,
             name = "",
             image = "",
+            backdrop = "",
             overview = "",
             voteAverage = 0.0,
             voteCount = 0,
@@ -22,3 +26,12 @@ data class Movie(
     }
 }
 
+fun Movie.toMovieEntity() = MovieEntity(
+    id = id,
+    name = name,
+    image = image,
+    backdrop = backdrop,
+    overview = overview,
+    voteAverage = voteAverage,
+    voteCount = voteCount,
+)

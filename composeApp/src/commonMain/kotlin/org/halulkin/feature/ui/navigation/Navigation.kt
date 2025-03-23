@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.halulkin.feature.ui.details.MovieDetailsRoute
+import org.halulkin.feature.ui.favorite.FavoriteRoute
 import org.halulkin.feature.ui.home.HomeRoute
 import org.jetbrains.compose.resources.stringResource
 
@@ -59,7 +60,7 @@ fun BottomNavigation(navController: NavController) {
                 selected = selectedItem == index,
                 onClick = {
                     selectedItem = index
-                    navController.navigate(item) {
+                    navController.navigate(item.route) {
                         navController.graph.startDestinationRoute?.let { screen ->
                             popUpTo(screen) {
                                 saveState = true
@@ -91,11 +92,13 @@ fun NavigationGraph(
                 }
             )
         }
-
         composable(route = BottomNavItem.Favorite.route) {
-            // TODO: Implement FavoriteRoute
+            FavoriteRoute(
+                onMovieClick = { movieId ->
+                    navController.navigate(NavItem.MovieDetails(movieId))
+                }
+            )
         }
-
         composable<NavItem.MovieDetails> {
             MovieDetailsRoute(
                 onBackPress = { navController.popBackStack() }

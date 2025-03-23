@@ -27,6 +27,7 @@ fun MovieDTO.toMovie(isFavorite: Boolean = false) = Movie(
     id = id ?: 0,
     name = title ?: "Unknown",
     image = (POSTER_BASE_URL + posterPath),
+    backdrop = (POSTER_BASE_URL + backdropPath),
     overview = overview ?: "",
     voteAverage = voteAverage ?: 0.0,
     voteCount = voteCount ?: 0,
