@@ -11,6 +11,7 @@ API_KEY=your_tmdb_api_key
 ```
 3. Save the file and run the app.
 
+## DESCRIPTION
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
