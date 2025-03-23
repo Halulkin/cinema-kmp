@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.buildConfig)
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.spotless)
 }
 
 kotlin {
@@ -120,4 +121,11 @@ dependencies {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+spotless {
+    kotlin {
+        target("src/**/*.kt")
+        ktlint()
+    }
 }
