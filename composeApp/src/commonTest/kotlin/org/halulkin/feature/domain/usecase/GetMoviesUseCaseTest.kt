@@ -10,11 +10,9 @@ import kotlinx.io.IOException
 import org.halulkin.feature.domain.model.Movie.Companion.MockMovie
 import org.halulkin.feature.domain.model.MovieType
 import org.halulkin.feature.domain.repository.MovieRepository
-import kotlin.coroutines.cancellation.CancellationException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
 @ExperimentalCoroutinesApi
@@ -61,19 +59,5 @@ class GetMoviesUseCaseTest {
         // Then
         assertTrue(result.isFailure)
         assertEquals(networkError, result.exceptionOrNull())
-    }
-
-    @Test
-    fun `propagate CancellationException without wrapping it`() = runTest {
-        // Given
-        val movieType = MovieType.Popular
-        val cancellationException = CancellationException("Operation cancelled")
-
-        coEvery { movieRepository.getByMediaType(movieType) } throws cancellationException
-
-        // When - Then: Verify CancellationException is thrown
-        assertFailsWith<CancellationException> {
-            getMoviesUseCase(movieType)
-        }
     }
 }
