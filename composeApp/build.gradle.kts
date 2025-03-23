@@ -65,6 +65,12 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.darwin)
         }
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+            implementation(libs.mockk)
+            implementation(libs.turbine)
+            implementation(libs.kotlinx.coroutines.test)
+        }
     }
 }
 
