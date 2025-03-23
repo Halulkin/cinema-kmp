@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   build:
     name: Check & Test
@@ -18,6 +19,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'gradle'
 
       - name: Grant execute permissions to Gradle wrapper
         run: chmod +x gradlew
