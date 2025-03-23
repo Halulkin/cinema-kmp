@@ -11,6 +11,8 @@ plugins {
     alias(libs.plugins.buildConfig)
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.detekt)
 }
 
 kotlin {
@@ -120,4 +122,16 @@ dependencies {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+spotless {
+    kotlin {
+        target("src/**/*.kt")
+        ktlint()
+    }
+}
+
+detekt {
+    config.setFrom("$rootDir/detekt-config.yml")
+    buildUponDefaultConfig = true
 }

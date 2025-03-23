@@ -7,7 +7,6 @@ import androidx.room.RoomDatabaseConstructor
 import org.halulkin.feature.data.persistence.dao.FavoriteMovieDao
 import org.halulkin.feature.data.persistence.entitiy.MovieEntity
 
-
 @Database(entities = [MovieEntity::class], version = 1)
 @ConstructedBy(AppDatabaseConstructor::class)
 abstract class AppDatabase : RoomDatabase() {

@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.halulkin.feature.domain.usecase.SaveFavoriteMovieUseCase
 import org.halulkin.feature.domain.usecase.GetMovieUseCase
 import org.halulkin.feature.domain.usecase.RemoveFavoriteMovieUseCase
+import org.halulkin.feature.domain.usecase.SaveFavoriteMovieUseCase
 
 class MovieDetailsViewModel(
     private val getMovieUseCase: GetMovieUseCase,
