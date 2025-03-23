@@ -65,7 +65,7 @@ class GetMoviesUseCaseTest {
     }
 
     @Test
-    fun `invoke should rethrow CancellationException`() = runTest {
+    fun `propagate CancellationException without wrapping it`() = runTest {
         // Given
         val movieType = MovieType.Popular
         val cancellationException = CancellationException("Operation cancelled")
