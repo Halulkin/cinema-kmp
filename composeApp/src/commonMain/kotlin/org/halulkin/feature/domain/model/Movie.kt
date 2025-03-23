@@ -1,7 +1,5 @@
 package org.halulkin.feature.domain.model
 
-import org.halulkin.feature.data.persistence.entitiy.MovieEntity
-
 data class Movie(
     val id: Int,
     val name: String,
@@ -25,13 +23,3 @@ data class Movie(
         )
     }
 }
-
-fun Movie.toMovieEntity() = MovieEntity(
-    id = id,
-    name = name,
-    image = image,
-    backdrop = backdrop,
-    overview = overview,
-    voteAverage = voteAverage,
-    voteCount = voteCount,
-)

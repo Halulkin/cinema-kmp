@@ -5,8 +5,8 @@ import kotlinx.coroutines.flow.map
 import org.halulkin.feature.data.persistence.AppDatabase
 import org.halulkin.feature.data.persistence.entitiy.MovieEntity
 import org.halulkin.feature.data.persistence.entitiy.toMovie
+import org.halulkin.feature.data.persistence.entitiy.toMovieEntity
 import org.halulkin.feature.domain.model.Movie
-import org.halulkin.feature.domain.model.toMovieEntity
 import org.halulkin.feature.domain.repository.FavoriteMovieRepository
 
 class FavoriteMovieRepositoryImp(

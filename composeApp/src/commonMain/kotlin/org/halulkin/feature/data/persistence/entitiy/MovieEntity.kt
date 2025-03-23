@@ -25,3 +25,13 @@ fun MovieEntity.toMovie() = Movie(
     voteCount = voteCount,
     isFavorite = true,
 )
+
+fun Movie.toMovieEntity() = MovieEntity(
+    id = id,
+    name = name,
+    image = image,
+    backdrop = backdrop,
+    overview = overview,
+    voteAverage = voteAverage,
+    voteCount = voteCount,
+)
