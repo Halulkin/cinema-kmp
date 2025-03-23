@@ -2,8 +2,8 @@ package org.halulkin.feature.data.api.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.halulkin.feature.domain.model.Movie
 import org.halulkin.core.utils.Constants.POSTER_BASE_URL
+import org.halulkin.feature.domain.model.Movie
 
 @Serializable
 data class MovieDTO(

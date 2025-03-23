@@ -30,4 +30,3 @@ fun rememberFavoriteActions(
         onMovieClick = onMovieClick
     )
 }
-
