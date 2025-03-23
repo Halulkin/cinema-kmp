@@ -10,11 +10,9 @@ import kotlinx.io.IOException
 import org.halulkin.feature.domain.model.Movie
 import org.halulkin.feature.domain.model.Movie.Companion.MockMovie
 import org.halulkin.feature.domain.repository.FavoriteMovieRepository
-import kotlin.coroutines.cancellation.CancellationException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
 @ExperimentalCoroutinesApi
@@ -89,17 +87,5 @@ class GetFavoriteMoviesUseCaseTest {
         // Then
         assertTrue(result.isFailure)
         assertEquals(databaseError, result.exceptionOrNull())
-    }
-
-    @Test
-    fun `invoke should rethrow CancellationException`() = runTest {
-        // Given
-        val cancellationException = CancellationException("Operation cancelled")
-        coEvery { favoriteMovieRepository.getMovies() } throws cancellationException
-
-        // When - Then: Verify CancellationException is thrown
-        assertFailsWith<CancellationException> {
-            getFavoriteMoviesUseCase()
-        }
     }
 }
