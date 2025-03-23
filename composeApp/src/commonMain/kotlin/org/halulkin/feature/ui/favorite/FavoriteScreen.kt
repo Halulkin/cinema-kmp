@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import org.halulkin.designsystem.components.LottieAnimation
+import org.halulkin.feature.ui.home.components.LoadingContent
 import org.halulkin.feature.ui.home.components.MovieCard
 import org.halulkin.feature.ui.home.components.MovieCardStyle
 
@@ -26,7 +26,7 @@ fun FavoriteScreen(
         contentAlignment = Alignment.Center
     ) {
         if (state.isLoading) {
-            LottieAnimation(filePath = "files/bear.json")
+            LoadingContent()
         } else {
             FavoriteScreenContent(
                 state = state,
