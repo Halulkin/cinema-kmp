@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -16,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import org.halulkin.designsystem.components.LottieAnimation
 import org.halulkin.feature.ui.details.components.MovieDescription
 import org.halulkin.feature.ui.details.components.MovieDetailsHeader
 import org.halulkin.feature.ui.details.components.MovieTitle
@@ -31,7 +31,7 @@ fun MovieDetailsScreen(
         contentAlignment = Alignment.Center
     ) {
         if (state.isLoading) {
-            CircularProgressIndicator()
+            LottieAnimation(filePath = "files/bear.json")
         } else if (state.error != null) {
             Text(
                 text = state.error,
