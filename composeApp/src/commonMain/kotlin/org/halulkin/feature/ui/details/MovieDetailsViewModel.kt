@@ -8,13 +8,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.halulkin.feature.domain.usecase.GetMovieUseCase
-import org.halulkin.feature.domain.usecase.RemoveFavoriteMovieUseCase
-import org.halulkin.feature.domain.usecase.SaveFavoriteMovieUseCase
+import org.halulkin.feature.domain.usecase.ToggleFavoriteMovieUseCase
 
 class MovieDetailsViewModel(
     private val getMovieUseCase: GetMovieUseCase,
-    private val saveFavoriteMovieUseCase: SaveFavoriteMovieUseCase,
-    private val removeFavoriteMovieUseCase: RemoveFavoriteMovieUseCase,
+    private val toggleFavoriteMovieUseCase: ToggleFavoriteMovieUseCase,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     companion object {
@@ -44,13 +42,7 @@ class MovieDetailsViewModel(
 
     fun toggleFavoriteMovie() = viewModelScope.launch {
         val currentMovie = stateFlow.value.movie
-        val result = if (currentMovie.isFavorite) {
-            removeFavoriteMovieUseCase(currentMovie.id)
-        } else {
-            saveFavoriteMovieUseCase(currentMovie)
-        }
-
-        result.onSuccess {
+        toggleFavoriteMovieUseCase(currentMovie).onSuccess {
             _stateFlow.update {
                 it.copy(movie = currentMovie.copy(isFavorite = !currentMovie.isFavorite))
             }

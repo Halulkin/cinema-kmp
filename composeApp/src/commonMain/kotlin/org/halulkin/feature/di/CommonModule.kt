@@ -11,8 +11,7 @@ import org.halulkin.feature.domain.repository.MovieRepository
 import org.halulkin.feature.domain.usecase.GetFavoriteMoviesUseCase
 import org.halulkin.feature.domain.usecase.GetMovieUseCase
 import org.halulkin.feature.domain.usecase.GetMoviesUseCase
-import org.halulkin.feature.domain.usecase.RemoveFavoriteMovieUseCase
-import org.halulkin.feature.domain.usecase.SaveFavoriteMovieUseCase
+import org.halulkin.feature.domain.usecase.ToggleFavoriteMovieUseCase
 import org.halulkin.feature.ui.details.MovieDetailsViewModel
 import org.halulkin.feature.ui.favorite.FavoriteViewModel
 import org.halulkin.feature.ui.home.HomeViewModel
@@ -30,8 +29,7 @@ fun commonModule() = module {
 
     single { GetMoviesUseCase(get()) }
     single { GetMovieUseCase(get()) }
-    single { SaveFavoriteMovieUseCase(get()) }
-    single { RemoveFavoriteMovieUseCase(get()) }
+    single { ToggleFavoriteMovieUseCase(get()) }
     single { GetFavoriteMoviesUseCase(get()) }
 
     viewModelOf(::HomeViewModel)
