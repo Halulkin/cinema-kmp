@@ -26,6 +26,7 @@ coil = "3.0.4"
 buildConfig = "5.5.1"
 ksp = "2.1.0-1.0.29"
 spotless = "5.15.0"
+detekt = "1.23.6"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -82,3 +83,4 @@ buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig
 room = { id = "androidx.room", version.ref = "androidx-room" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

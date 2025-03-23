@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.room)
     alias(libs.plugins.ksp)
     alias(libs.plugins.spotless)
+    alias(libs.plugins.detekt)
 }
 
 kotlin {
@@ -128,4 +129,9 @@ spotless {
         target("src/**/*.kt")
         ktlint()
     }
+}
+
+detekt {
+    config.setFrom("$rootDir/detekt-config.yml")
+    buildUponDefaultConfig = true
 }
