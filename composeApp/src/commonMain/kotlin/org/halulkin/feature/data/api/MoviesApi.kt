@@ -25,39 +25,31 @@ class MoviesApi(
             .toMovie()
     }
 
-    fun getPopularMovies(): Result<Flow<PagingData<Movie>>> = runCatching {
-        fetchPagedMovies { page ->
-            httpClient.get(urlString = "movie/popular") {
-                parameter("page", page)
-            }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
-        }
+    fun getPopularMovies(): Flow<PagingData<Movie>> = fetchPagedMovies { page ->
+        httpClient.get(urlString = "movie/popular") {
+            parameter("page", page)
+        }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
     }
 
-    fun getTrendingMovies(): Result<Flow<PagingData<Movie>>> = runCatching {
-        fetchPagedMovies { page ->
-            httpClient.get(urlString = "trending/movie/day") {
-                parameter("page", page)
-            }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
-        }
+    fun getTrendingMovies(): Flow<PagingData<Movie>> = fetchPagedMovies { page ->
+        httpClient.get(urlString = "trending/movie/day") {
+            parameter("page", page)
+        }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
     }
 
-    fun getTopRatedMovies(): Result<Flow<PagingData<Movie>>> = runCatching {
-        fetchPagedMovies { page ->
-            httpClient.get(urlString = "movie/top_rated") {
-                parameter("page", page)
-            }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
-        }
+    fun getTopRatedMovies(): Flow<PagingData<Movie>> = fetchPagedMovies { page ->
+        httpClient.get(urlString = "movie/top_rated") {
+            parameter("page", page)
+        }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
     }
 
     private fun fetchPagedMovies(
         fetch: suspend (Int) -> List<Movie>,
-    ): Flow<PagingData<Movie>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = Constants.PAGE_SIZE,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { MoviesPagingSource(fetch) }
-        ).flow
-    }
+    ): Flow<PagingData<Movie>> = Pager(
+        config = PagingConfig(
+            pageSize = Constants.PAGE_SIZE,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { MoviesPagingSource(fetch) }
+    ).flow
 }
