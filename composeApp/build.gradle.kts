@@ -55,7 +55,7 @@ kotlin {
             implementation(libs.sqlite.bundled)
             implementation(libs.navigation.compose)
             implementation(libs.kotlinx.serialization.json)
-            implementation (libs.compottie)
+            implementation(libs.compottie)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.composeViewModel)

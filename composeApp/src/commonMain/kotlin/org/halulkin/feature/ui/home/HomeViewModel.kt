@@ -43,7 +43,7 @@ class HomeViewModel(
                     )
                 }
             }.onFailure { error ->
-                _stateFlow.update { it.copy(isLoading = false, error = error.message) }
+                _stateFlow.update { it.copy(isLoading = false, error = error) }
             }
     }
 }

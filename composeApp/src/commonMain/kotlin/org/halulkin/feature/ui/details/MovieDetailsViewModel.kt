@@ -36,7 +36,7 @@ class MovieDetailsViewModel(
                 _stateFlow.update { it.copy(isLoading = false, movie = movie) }
             }
             .onFailure { error ->
-                _stateFlow.update { it.copy(isLoading = false, error = error.message) }
+                _stateFlow.update { it.copy(isLoading = false, error = error) }
             }
     }
 

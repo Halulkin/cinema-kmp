@@ -32,7 +32,7 @@ fun MovieDetailsScreen(
         if (state.isLoading) {
             LoadingContent()
         } else if (state.error != null) {
-            ErrorContent(message = state.error)
+            ErrorContent()
         } else {
             MovieDetailsContent(
                 state = state,

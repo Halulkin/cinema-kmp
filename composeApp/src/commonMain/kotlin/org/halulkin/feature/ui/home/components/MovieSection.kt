@@ -13,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import app.cash.paging.LoadStateError
 import app.cash.paging.compose.LazyPagingItems
 import org.halulkin.feature.domain.model.Movie
 
@@ -25,8 +24,6 @@ fun MovieSection(
     onMovieClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    if (movies?.loadState?.refresh is LoadStateError || movies == null) return
-
     Column(modifier = modifier) {
         Text(
             text = title,
@@ -38,8 +35,8 @@ fun MovieSection(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.fillMaxWidth().wrapContentHeight(),
         ) {
-            items(movies.itemCount) { index ->
-                movies[index]?.let {
+            items(movies?.itemCount ?: 0) { index ->
+                movies?.get(index)?.let {
                     MovieCard(
                         image = it.image,
                         title = it.name,

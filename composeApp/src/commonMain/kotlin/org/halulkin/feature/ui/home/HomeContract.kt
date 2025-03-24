@@ -7,7 +7,7 @@ import org.halulkin.feature.domain.model.MovieType
 
 data class HomeState(
     val isLoading: Boolean = true,
-    val error: String? = null,
+    val error: Throwable? = null,
     val movies: Map<MovieType, Flow<PagingData<Movie>>> = emptyMap(),
 )
 
