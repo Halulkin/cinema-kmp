@@ -5,12 +5,12 @@ import androidx.compose.ui.Modifier
 import org.halulkin.designsystem.components.LottieMessageContent
 
 @Composable
-fun ErrorContent(
-    message: String,
+fun LoadingContent(
+    message: String = "Just a moment",
     modifier: Modifier = Modifier
 ) {
     LottieMessageContent(
-        filePath = "files/error.json",
+        filePath = "files/loading.json",
         message = message,
         modifier = modifier
     )
