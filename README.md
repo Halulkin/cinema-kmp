@@ -1,18 +1,24 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# 🎬 Cinema-KMP  
 
-## HOW TO RUN
+Cinema-KMP is a **Kotlin Multiplatform (KMP)** project targeting **Android** and **iOS**, designed to showcase modern app architecture with **Compose Multiplatform**.  
 
-Add your TMDB API key to the `local.properties` file before running the app:
+---
 
-1. Open or create the `local.properties` file.
-2. Add a line in this format:
-```
-API_KEY=your_tmdb_api_key
-```
-3. Save the file and run the app.
+## 🚀 How to Run  
 
-## DESCRIPTION
+Before running the app, add your **TMDB API key** to the `local.properties` file:  
 
+1. Open (or create) the `local.properties` file in the root directory.  
+2. Add the following line:  
+
+   ```properties
+   API_KEY=your_tmdb_api_key
+   ```  
+3. Save the file and run the app.  
+
+---
+
+## 📂 Project Structure  
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
   - `commonMain` is for code that’s common for all targets.
@@ -25,3 +31,24 @@ API_KEY=your_tmdb_api_key
 
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+---
+
+## 📌 TODO: Planned Improvements  
+
+### 🛠 **Architecture & Code Structure**  
+✅ **Refactor project into separate modules:**  
+- `core` – Shared logic and utilities  
+- `designsystem` – UI components and styles  
+- `feature` – Screens and features  
+
+### 🎨 **Home Screen Improvements**  
+🔹 **Redesign the home screen layout:**  
+- Show **only the first page** of each section instead of endless paging  
+- Add a **"See More" button** to navigate to full-screen views  
+- Implement a **LazyGrid with infinite scroll and paging** inside full-screen views  
+
+### 🚀 **Future Enhancements**  
+📌 *To be decided later...* 🤔  
+
+---
