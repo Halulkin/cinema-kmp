@@ -42,11 +42,11 @@ Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-mu
 - `designsystem` – UI components and styles  
 - `feature` – Screens and features  
 
-### 🎨 **Home Screen Improvements**  
-🔹 **Redesign the home screen layout:**  
-- Show **only the first page** of each section instead of endless paging  
-- Add a **"See More" button** to navigate to full-screen views  
-- Implement a **LazyGrid with infinite scroll and paging** inside full-screen views  
+### 🎨 **Home Screen Improvements**
+🔹 **Redesign the home screen layout:**
+- [x] Show **only the first page** of each section instead of endless paging
+- [x] Add a **"See More" button** to navigate to full-screen views
+- [x] Implement a **LazyGrid with infinite scroll and paging** inside full-screen views 
 
 ### 🚀 **Future Enhancements**  
 📌 *To be decided later...* 🤔  
