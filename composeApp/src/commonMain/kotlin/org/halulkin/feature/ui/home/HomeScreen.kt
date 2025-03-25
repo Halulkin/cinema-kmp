@@ -49,6 +49,7 @@ internal fun HomeScreen(
             anyLoading -> {
                 LoadingContent()
             }
+
             allError -> {
                 ErrorContent(
                     onClick = {
@@ -72,18 +73,21 @@ internal fun HomeScreen(
                         movies = trendingMovies,
                         style = MovieCardStyle.Small,
                         onMovieClick = actions.onMovieClick,
+                        onSeeAllClick = { actions.onMovieListClick(MovieType.Trending) },
                     )
                     MovieSection(
                         title = "Popular",
                         movies = popularMovies,
                         style = MovieCardStyle.Small,
                         onMovieClick = actions.onMovieClick,
+                        onSeeAllClick = { actions.onMovieListClick(MovieType.Popular) },
                     )
                     MovieSection(
                         title = "Top Rated",
                         movies = topRatedMovies,
                         style = MovieCardStyle.Small,
                         onMovieClick = actions.onMovieClick,
+                        onSeeAllClick = { actions.onMovieListClick(MovieType.TopRated) },
                     )
                 }
             }

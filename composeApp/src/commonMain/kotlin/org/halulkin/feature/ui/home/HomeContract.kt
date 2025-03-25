@@ -13,4 +13,5 @@ data class HomeState(
 
 data class HomeActions(
     val onMovieClick: (Int) -> Unit = {},
+    val onMovieListClick: (MovieType) -> Unit = {},
 )

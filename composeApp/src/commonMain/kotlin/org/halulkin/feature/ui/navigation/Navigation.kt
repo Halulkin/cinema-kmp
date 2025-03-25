@@ -20,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import org.halulkin.feature.ui.details.MovieDetailsRoute
 import org.halulkin.feature.ui.favorite.FavoriteRoute
 import org.halulkin.feature.ui.home.HomeRoute
+import org.halulkin.feature.ui.movielist.MovieListRoute
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -89,6 +90,9 @@ fun NavigationGraph(
             HomeRoute(
                 onMovieClick = { movieId ->
                     navController.navigate(NavItem.MovieDetails(movieId))
+                },
+                onMovieListClick = { moviesType ->
+                    navController.navigate(NavItem.MovieList(moviesType))
                 }
             )
         }
@@ -103,6 +107,10 @@ fun NavigationGraph(
             MovieDetailsRoute(
                 onBackPress = { navController.popBackStack() }
             )
+        }
+
+        composable<NavItem.MovieList> {
+            MovieListRoute()
         }
     }
 }
