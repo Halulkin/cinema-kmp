@@ -103,7 +103,7 @@ fun NavigationGraph(
                 }
             )
         }
-        composable<NavItem.MovieList> {
+        composable<NavItem.MovieDetails> {
             MovieDetailsRoute(
                 onBackPress = { navController.popBackStack() }
             )
