@@ -1,7 +1,6 @@
 package org.halulkin.feature.ui.navigation
 
 import kotlinx.serialization.Serializable
-import org.halulkin.feature.domain.model.MovieType
 
 @Serializable
 sealed interface NavItem {
@@ -10,5 +9,5 @@ sealed interface NavItem {
     data class MovieDetails(val movieId: Int) : NavItem
 
     @Serializable
-    data class MovieList(val moviesType: MovieType) : NavItem
+    data class MovieList(val moviesType: String) : NavItem
 }

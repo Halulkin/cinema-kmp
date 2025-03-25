@@ -92,7 +92,7 @@ fun NavigationGraph(
                     navController.navigate(NavItem.MovieDetails(movieId))
                 },
                 onMovieListClick = { moviesType ->
-                    navController.navigate(NavItem.MovieList(moviesType))
+                    navController.navigate(NavItem.MovieList(moviesType.name))
                 }
             )
         }
@@ -103,7 +103,7 @@ fun NavigationGraph(
                 }
             )
         }
-        composable<NavItem.MovieDetails> {
+        composable<NavItem.MovieList> {
             MovieDetailsRoute(
                 onBackPress = { navController.popBackStack() }
             )

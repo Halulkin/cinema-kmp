@@ -15,7 +15,9 @@ class MovieListViewModel(
         const val MOVIES_TYPE_KEY = "moviesType"
     }
 
-    private val moviesType: MovieType = checkNotNull(savedStateHandle[MOVIES_TYPE_KEY])
+    private val moviesType: MovieType? = savedStateHandle.get<String>(MOVIES_TYPE_KEY)?.let {
+        MovieType.valueOf(it)
+    }
 
     private val _stateFlow: MutableStateFlow<MovieListState> = MutableStateFlow(MovieListState())
     val stateFlow: StateFlow<MovieListState> = _stateFlow.asStateFlow()
