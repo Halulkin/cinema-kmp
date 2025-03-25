@@ -10,7 +10,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun MovieListRoute(
     viewModel: MovieListViewModel = koinViewModel<MovieListViewModel>(),
 ) {
-    val uiState by viewModel.stateFlow.collectAsStateWithLifecycle(MovieListState())
+    val uiState by viewModel.stateFlow.collectAsStateWithLifecycle()
     val actions = rememberMovieListActions(viewModel)
 
     MovieListScreen(uiState, actions)

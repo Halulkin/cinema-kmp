@@ -1,17 +1,23 @@
 package org.halulkin.feature.ui.movielist
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import app.cash.paging.LoadStateError
+import app.cash.paging.LoadStateLoading
 import app.cash.paging.compose.LazyPagingItems
 import app.cash.paging.compose.collectAsLazyPagingItems
 import org.halulkin.feature.domain.model.Movie
+import org.halulkin.feature.ui.home.components.ErrorContent
+import org.halulkin.feature.ui.home.components.LoadingContent
 import org.halulkin.feature.ui.home.components.MovieCard
 import org.halulkin.feature.ui.home.components.MovieCardStyle
 
@@ -22,10 +28,21 @@ fun MovieListScreen(
 ) {
     val movies = state.movies.collectAsLazyPagingItems()
 
-    MovieListContent(
-        movies = movies,
-        actions = actions,
-    )
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        when (movies.loadState.refresh) {
+            is LoadStateLoading -> LoadingContent()
+            is LoadStateError -> ErrorContent(onClick = { movies.refresh() })
+            else -> {
+                MovieListContent(
+                    movies = movies,
+                    actions = actions,
+                )
+            }
+        }
+    }
 }
 
 @Composable
