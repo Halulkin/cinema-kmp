@@ -21,6 +21,11 @@ class HomeViewModel(
         loadContent()
     }
 
+    fun retry() {
+        _stateFlow.update { it.copy(error = null) }
+        loadContent()
+    }
+
     private fun loadContent() {
         val movieMediaTypes = listOf(
             MovieType.TopRated,

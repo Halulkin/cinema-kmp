@@ -32,6 +32,7 @@ fun rememberHomeActions(
 ) = remember(viewModel) {
     HomeActions(
         onMovieClick = onMovieClick,
-        onMovieListClick = onMovieListClick
+        onMovieListClick = onMovieListClick,
+        onRetry = viewModel::retry,
     )
 }
