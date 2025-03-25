@@ -6,5 +6,6 @@ import org.halulkin.feature.domain.model.Movie
 import org.halulkin.feature.domain.model.MovieType
 
 interface MovieRepository {
-    fun getByMediaType(movieType: MovieType): Flow<PagingData<Movie>>
+    suspend fun getMoviesByType(movieType: MovieType): List<Movie>
+    fun getPagingMoviesByType(movieType: MovieType): Flow<PagingData<Movie>>
 }

@@ -11,6 +11,7 @@ import org.halulkin.feature.domain.repository.MovieRepository
 import org.halulkin.feature.domain.usecase.GetFavoriteMoviesUseCase
 import org.halulkin.feature.domain.usecase.GetMovieUseCase
 import org.halulkin.feature.domain.usecase.GetMoviesUseCase
+import org.halulkin.feature.domain.usecase.GetPagingMoviesUseCase
 import org.halulkin.feature.domain.usecase.ToggleFavoriteMovieUseCase
 import org.halulkin.feature.ui.details.MovieDetailsViewModel
 import org.halulkin.feature.ui.favorite.FavoriteViewModel
@@ -29,6 +30,7 @@ fun commonModule() = module {
     single<MovieDetailsRepository> { MovieDetailsRepositoryImpl(remote = get(), local = get()) }
 
     single { GetMoviesUseCase(get()) }
+    single { GetPagingMoviesUseCase(get()) }
     single { GetMovieUseCase(get()) }
     single { ToggleFavoriteMovieUseCase(get()) }
     single { GetFavoriteMoviesUseCase(get()) }

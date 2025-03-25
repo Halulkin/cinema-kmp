@@ -25,31 +25,22 @@ class MoviesApi(
             .toMovie()
     }
 
-    fun getPopularMovies(): Flow<PagingData<Movie>> = fetchPagedMovies { page ->
-        httpClient.get(urlString = "movie/popular") {
-            parameter("page", page)
-        }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
-    }
+    private suspend fun fetchMovies(endpoint: String, page: Int): List<Movie> =
+        httpClient
+            .get(urlString = endpoint) {
+                parameter("page", page)
+            }
+            .body<MoviesResponse>()
+            .movies
+            .map(MovieDTO::toMovie)
 
-    fun getTrendingMovies(): Flow<PagingData<Movie>> = fetchPagedMovies { page ->
-        httpClient.get(urlString = "trending/movie/day") {
-            parameter("page", page)
-        }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
-    }
+    suspend fun getMoviesByEndpoint(endpoint: String): List<Movie> = fetchMovies(endpoint, 1)
 
-    fun getTopRatedMovies(): Flow<PagingData<Movie>> = fetchPagedMovies { page ->
-        httpClient.get(urlString = "movie/top_rated") {
-            parameter("page", page)
-        }.body<MoviesResponse>().movies.map(MovieDTO::toMovie)
-    }
-
-    private fun fetchPagedMovies(
-        fetch: suspend (Int) -> List<Movie>,
-    ): Flow<PagingData<Movie>> = Pager(
+    fun getPagingMoviesByEndpoint(endpoint: String): Flow<PagingData<Movie>> = Pager(
         config = PagingConfig(
             pageSize = Constants.PAGE_SIZE,
             enablePlaceholders = false
         ),
-        pagingSourceFactory = { MoviesPagingSource(fetch) }
+        pagingSourceFactory = { MoviesPagingSource { page -> fetchMovies(endpoint, page) } }
     ).flow
 }

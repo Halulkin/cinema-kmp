@@ -10,10 +10,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.halulkin.feature.domain.model.MovieType
-import org.halulkin.feature.domain.usecase.GetMoviesUseCase
+import org.halulkin.feature.domain.usecase.GetPagingMoviesUseCase
 
 class MovieListViewModel(
-    private val getMoviesUseCase: GetMoviesUseCase,
+    private val getPagingMoviesUseCase: GetPagingMoviesUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -35,7 +35,7 @@ class MovieListViewModel(
     }
 
     private fun loadMovies(movieType: MovieType) = viewModelScope.launch {
-        getMoviesUseCase(movieType)
+        getPagingMoviesUseCase(movieType)
             .onSuccess { movies ->
                 _stateFlow.update {
                     it.copy(movies = movies.cachedIn(viewModelScope))

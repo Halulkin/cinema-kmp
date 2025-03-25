@@ -2,7 +2,6 @@ package org.halulkin.feature.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.cash.paging.cachedIn
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -39,11 +38,13 @@ class HomeViewModel(
                 _stateFlow.update {
                     it.copy(
                         isLoading = false,
-                        movies = it.movies + (movieType to movies.cachedIn(viewModelScope)),
+                        movies = it.movies + (movieType to movies),
                     )
                 }
             }.onFailure { error ->
-                _stateFlow.update { it.copy(isLoading = false, error = error) }
+                _stateFlow.update {
+                    it.copy(isLoading = false, error = error)
+                }
             }
     }
 }

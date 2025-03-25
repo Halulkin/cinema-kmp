@@ -1,13 +1,12 @@
 package org.halulkin.feature.domain.usecase
 
-import org.halulkin.core.extensions.suspendRunCatching
 import org.halulkin.feature.domain.model.MovieType
 import org.halulkin.feature.domain.repository.MovieRepository
 
-class GetMoviesUseCase(
+class GetPagingMoviesUseCase(
     private val movieRepository: MovieRepository,
 ) {
-    suspend operator fun invoke(moviesType: MovieType) = suspendRunCatching {
-        movieRepository.getMoviesByType(moviesType)
+    operator fun invoke(moviesType: MovieType) = runCatching {
+        movieRepository.getPagingMoviesByType(moviesType)
     }
 }
