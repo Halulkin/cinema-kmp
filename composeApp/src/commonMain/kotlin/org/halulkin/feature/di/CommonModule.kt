@@ -11,10 +11,12 @@ import org.halulkin.feature.domain.repository.MovieRepository
 import org.halulkin.feature.domain.usecase.GetFavoriteMoviesUseCase
 import org.halulkin.feature.domain.usecase.GetMovieUseCase
 import org.halulkin.feature.domain.usecase.GetMoviesUseCase
+import org.halulkin.feature.domain.usecase.GetPagingMoviesUseCase
 import org.halulkin.feature.domain.usecase.ToggleFavoriteMovieUseCase
 import org.halulkin.feature.ui.details.MovieDetailsViewModel
 import org.halulkin.feature.ui.favorite.FavoriteViewModel
 import org.halulkin.feature.ui.home.HomeViewModel
+import org.halulkin.feature.ui.movielist.MovieListViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
@@ -28,6 +30,7 @@ fun commonModule() = module {
     single<MovieDetailsRepository> { MovieDetailsRepositoryImpl(remote = get(), local = get()) }
 
     single { GetMoviesUseCase(get()) }
+    single { GetPagingMoviesUseCase(get()) }
     single { GetMovieUseCase(get()) }
     single { ToggleFavoriteMovieUseCase(get()) }
     single { GetFavoriteMoviesUseCase(get()) }
@@ -35,6 +38,7 @@ fun commonModule() = module {
     viewModelOf(::HomeViewModel)
     viewModelOf(::MovieDetailsViewModel)
     viewModelOf(::FavoriteViewModel)
+    viewModelOf(::MovieListViewModel)
 }
 
 expect fun platformModule(): Module

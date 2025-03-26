@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import app.cash.paging.compose.collectAsLazyPagingItems
+import org.halulkin.feature.domain.model.Movie
 import org.halulkin.feature.domain.model.MovieType
 import org.halulkin.feature.ui.home.components.ErrorContent
 import org.halulkin.feature.ui.home.components.LoadingContent
@@ -30,11 +30,12 @@ internal fun HomeScreen(
         if (state.isLoading) {
             LoadingContent()
         } else if (state.error != null) {
-            ErrorContent(message = state.error)
+            ErrorContent(onClick = actions.onRetry)
         } else {
             HomeContent(
-                state = state,
+                movies = state.movies,
                 onMovieClick = actions.onMovieClick,
+                onSeeAllClick = actions.onMovieListClick,
             )
         }
     }
@@ -43,8 +44,9 @@ internal fun HomeScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun HomeContent(
-    state: HomeState,
+    movies: Map<MovieType, List<Movie>>,
     onMovieClick: (Int) -> Unit,
+    onSeeAllClick: (MovieType) -> Unit,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(24.dp),
@@ -54,21 +56,24 @@ private fun HomeContent(
     ) {
         MovieSection(
             title = "Trending",
-            movies = state.movies[MovieType.Trending]?.collectAsLazyPagingItems(),
+            movies = movies[MovieType.Trending].orEmpty(),
             style = MovieCardStyle.Small,
             onMovieClick = onMovieClick,
+            onSeeAllClick = { onSeeAllClick(MovieType.Trending) },
         )
         MovieSection(
             title = "Popular",
-            movies = state.movies[MovieType.Popular]?.collectAsLazyPagingItems(),
+            movies = movies[MovieType.Popular].orEmpty(),
             style = MovieCardStyle.Small,
             onMovieClick = onMovieClick,
+            onSeeAllClick = { onSeeAllClick(MovieType.Popular) },
         )
         MovieSection(
             title = "Top Rated",
-            movies = state.movies[MovieType.TopRated]?.collectAsLazyPagingItems(),
+            movies = movies[MovieType.TopRated].orEmpty(),
             style = MovieCardStyle.Small,
             onMovieClick = onMovieClick,
+            onSeeAllClick = { onSeeAllClick(MovieType.TopRated) },
         )
     }
 }

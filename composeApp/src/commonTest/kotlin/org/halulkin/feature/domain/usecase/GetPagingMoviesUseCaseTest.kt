@@ -16,15 +16,15 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 @ExperimentalCoroutinesApi
-class GetMoviesUseCaseTest {
+class GetPagingMoviesUseCaseTest {
 
     private lateinit var movieRepository: MovieRepository
-    private lateinit var getMoviesUseCase: GetMoviesUseCase
+    private lateinit var getPagingMoviesUseCase: GetPagingMoviesUseCase
 
     @BeforeTest
     fun setup() {
         movieRepository = mockk()
-        getMoviesUseCase = GetMoviesUseCase(movieRepository)
+        getPagingMoviesUseCase = GetPagingMoviesUseCase(movieRepository)
     }
 
     @Test
@@ -35,10 +35,10 @@ class GetMoviesUseCaseTest {
             PagingData.from(listOf(MockMovie, MockMovie))
         )
 
-        coEvery { movieRepository.getByMediaType(movieType) } returns mockMoviesFlow
+        coEvery { movieRepository.getPagingMoviesByType(movieType) } returns mockMoviesFlow
 
         // When
-        val result = getMoviesUseCase(movieType)
+        val result = getPagingMoviesUseCase(movieType)
 
         // Then
         assertTrue(result.isSuccess)
@@ -51,10 +51,10 @@ class GetMoviesUseCaseTest {
         val movieType = MovieType.Trending
         val networkError = IOException("Network error")
 
-        coEvery { movieRepository.getByMediaType(movieType) } throws networkError
+        coEvery { movieRepository.getPagingMoviesByType(movieType) } throws networkError
 
         // When
-        val result = getMoviesUseCase(movieType)
+        val result = getPagingMoviesUseCase(movieType)
 
         // Then
         assertTrue(result.isFailure)

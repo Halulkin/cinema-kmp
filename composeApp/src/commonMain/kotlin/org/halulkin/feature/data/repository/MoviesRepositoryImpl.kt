@@ -10,11 +10,15 @@ import org.halulkin.feature.domain.repository.MovieRepository
 class MoviesRepositoryImpl(
     private val remote: MoviesApi,
 ) : MovieRepository {
-    override fun getByMediaType(movieType: MovieType): Flow<PagingData<Movie>> {
-        return when (movieType) {
-            MovieType.Trending -> remote.getTrendingMovies()
-            MovieType.Popular -> remote.getPopularMovies()
-            MovieType.TopRated -> remote.getTopRatedMovies()
-        }
-    }
+    override suspend fun getMoviesByType(movieType: MovieType): List<Movie> =
+        remote.getMoviesByEndpoint(movieType.toEndpoint())
+
+    override fun getPagingMoviesByType(movieType: MovieType): Flow<PagingData<Movie>> =
+        remote.getPagingMoviesByEndpoint(movieType.toEndpoint())
+}
+
+private fun MovieType.toEndpoint(): String = when (this) {
+    MovieType.Trending -> "trending/movie/day"
+    MovieType.Popular -> "movie/popular"
+    MovieType.TopRated -> "movie/top_rated"
 }

@@ -6,12 +6,13 @@ import org.halulkin.designsystem.components.LottieMessageContent
 
 @Composable
 fun ErrorContent(
-    message: String,
+    onClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     LottieMessageContent(
         filePath = "files/error.json",
-        message = message,
+        message = "Oops! Something went wrong",
+        onClick = onClick,
         modifier = modifier
     )
 }

@@ -7,7 +7,8 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import cinema_kmp.composeapp.generated.resources.Res
 import io.github.alexzhirkevich.compottie.Compottie
 import io.github.alexzhirkevich.compottie.LottieCompositionSpec
@@ -29,6 +31,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 fun LottieMessageContent(
     filePath: String,
     message: String,
+    onClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     val composition by rememberLottieComposition {
@@ -40,11 +43,11 @@ fun LottieMessageContent(
 
     AnimatedVisibility(
         visible = isReady,
-        enter = fadeIn(tween(durationMillis = 1000)),
-        exit = fadeOut(tween(durationMillis = 1000))
+        enter = fadeIn(tween()),
+        exit = fadeOut(tween())
     ) {
         Column(
-            modifier = modifier.fillMaxSize(),
+            modifier = modifier,
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -60,6 +63,14 @@ fun LottieMessageContent(
                 style = MaterialTheme.typography.titleLarge,
                 textAlign = TextAlign.Center
             )
+            onClick?.let {
+                Button(
+                    onClick = { it() },
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    Text("Retry")
+                }
+            }
         }
     }
 }

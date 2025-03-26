@@ -5,7 +5,7 @@ import org.halulkin.feature.domain.model.Movie.Companion.MockMovie
 
 data class MovieDetailsState(
     val isLoading: Boolean = false,
-    val error: String? = null,
+    val error: Throwable? = null,
     val movie: Movie = MockMovie,
 )
 
