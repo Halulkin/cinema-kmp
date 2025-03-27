@@ -110,7 +110,11 @@ fun NavigationGraph(
         }
 
         composable<NavItem.MovieList> {
-            MovieListRoute()
+            MovieListRoute(
+                onMovieClick = { movieId ->
+                    navController.navigate(NavItem.MovieDetails(movieId))
+                },
+            )
         }
     }
 }

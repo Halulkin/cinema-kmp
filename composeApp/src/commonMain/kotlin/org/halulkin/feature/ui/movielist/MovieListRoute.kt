@@ -9,16 +9,20 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun MovieListRoute(
     viewModel: MovieListViewModel = koinViewModel<MovieListViewModel>(),
+    onMovieClick: (Int) -> Unit
 ) {
     val uiState by viewModel.stateFlow.collectAsStateWithLifecycle()
-    val actions = rememberMovieListActions(viewModel)
+    val actions = rememberMovieListActions(onMovieClick, viewModel)
 
     MovieListScreen(uiState, actions)
 }
 
 @Composable
 fun rememberMovieListActions(
+    onMovieClick: (Int) -> Unit,
     viewModel: MovieListViewModel
 ) = remember(viewModel) {
-    MovieListActions()
+    MovieListActions(
+        onMovieClicked = onMovieClick
+    )
 }
