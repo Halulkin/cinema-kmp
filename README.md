@@ -40,13 +40,7 @@ Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-mu
 ✅ **Refactor project into separate modules:**  
 - `core` – Shared logic and utilities  
 - `designsystem` – UI components and styles  
-- `feature` – Screens and features  
-
-### 🎨 **Home Screen Improvements**
-🔹 **Redesign the home screen layout:**
-- [x] Show **only the first page** of each section instead of endless paging
-- [x] Add a **"See More" button** to navigate to full-screen views
-- [x] Implement a **LazyGrid with infinite scroll and paging** inside full-screen views 
+- `feature` – Screens and features
 
 ### 🚀 **Future Enhancements**  
 📌 *To be decided later...* 🤔  
