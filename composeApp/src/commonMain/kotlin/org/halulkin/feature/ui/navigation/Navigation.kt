@@ -114,6 +114,7 @@ fun NavigationGraph(
                 onMovieClick = { movieId ->
                     navController.navigate(NavItem.MovieDetails(movieId))
                 },
+                onBackClick = { navController.popBackStack() }
             )
         }
     }

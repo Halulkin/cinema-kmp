@@ -1,6 +1,5 @@
 package org.halulkin.feature.ui.movielist
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,7 +14,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import app.cash.paging.LoadStateError
@@ -68,7 +66,7 @@ fun MovieListContent(
             title = header,
             onBackButtonClick = actions.onBackClick,
             scrollBehavior = scrollBehavior,
-            modifier = Modifier.fillMaxWidth().border(1.dp, Red),
+            modifier = Modifier.fillMaxWidth(),
         )
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
