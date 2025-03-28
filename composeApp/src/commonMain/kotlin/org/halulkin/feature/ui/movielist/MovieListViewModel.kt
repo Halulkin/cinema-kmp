@@ -27,7 +27,9 @@ class MovieListViewModel(
         }
     )
 
-    private val _stateFlow: MutableStateFlow<MovieListState> = MutableStateFlow(MovieListState())
+    private val _stateFlow: MutableStateFlow<MovieListState> = MutableStateFlow(
+        MovieListState(headerTitle = moviesType.name)
+    )
     val stateFlow: StateFlow<MovieListState> = _stateFlow.asStateFlow()
 
     init {
